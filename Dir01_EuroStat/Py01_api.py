@@ -16,15 +16,5 @@ def runApi(api):
                                     )
     jsonStr=response.json()
 
-    df = pd.read_json(json.loads(jsonStr),orient="index")
-
-    df = pd.DataFrame.from_dict(json.loads(jsonStr),orient="index")
-    print(json)
-
-    from pyjstat import pyjstat
-
-    # Load JSON-stat data from a URL
-
     dataset = pyjstat.from_json_stat(jsonStr)
-
-    df = pd.DataFrame(dataset)
+    df = pd.DataFrame(dataset[0])
